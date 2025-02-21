@@ -1,5 +1,5 @@
 # Node.js 20.18 Slim 이미지 사용
-FROM node:20.18-slim
+FROM registry.cn-hangzhou.aliyuncs.com/v2/library/node/manifests/20.18-slim
 
 # 작업 디렉터리 설정
 WORKDIR /app
