@@ -1,5 +1,5 @@
 # Node.js 20.18 Slim 이미지 사용
-FROM node:20.18-slim
+FROM alibaba-cloud-linux-3-registry.cn-hangzhou.cr.aliyuncs.com/alinux3/node:20.16
 
 # 작업 디렉터리 설정
 WORKDIR /app
