@@ -2,8 +2,8 @@ name: Build and Push Docker Image
 
 on:
   push:
-    branches: [ "main" ]    # 1. 일반 커밋도 빌드하고
-    tags: [ "v*" ]          # 2. 'v'로 시작하는 태그(v1.0, v2.0...)가 달리면 작동해라!
+    branches: [ "main" ]
+    tags: [ "v*" ]
 
 jobs:
   build:
