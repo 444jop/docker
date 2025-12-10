@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: flask-deploy
+  labels:
+    app: flask-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: flask-app
+  template:
+    metadata:
+      labels:
+        app: flask-app
+    spec:
+      containers:
+      - name: flask-container
+        image: 444jop/my-flask-app:v3.0
+        ports:
+        - containerPort: 5000
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: flask-service
+spec:
+  type: LoadBalancer
+  selector:
+    app: flask-app # 디플로이먼트에 달려있는 레이블을 선택
+  ports:
+    - protocol: TCP
+      port: 80        # 👈 서비스의 대문 번호 (우리는 80번으로 들어갈 겁니다)
+      targetPort: 5000 # 👈 실제 컨테이너 내부의 파이썬 앱이 열고 있는 번호
