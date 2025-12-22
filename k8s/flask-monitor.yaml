@@ -1,0 +1,18 @@
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: flask-monitor
+  namespace: monitoring        # (주의) 프로메테우스가 설치된 곳!
+  labels:
+    release: my-monitor # (중요) 질문자님의 프로메테우스 라벨
+spec:
+  namespaceSelector:
+    matchNames:
+    - default
+  selector:
+    matchLabels:
+      app: flask-app           # (확인 완료) 아까 확인한 파드 라벨
+  endpoints:
+  - port: http-flask           # ✅ 방금 우리가 붙여준 그 이름표!
+    path: /metrics
+    interval: 15s
